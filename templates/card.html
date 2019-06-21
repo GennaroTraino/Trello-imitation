@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title>Join The Offer</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <link rel='stylesheet' type='text/css' media='screen' href='main.css'>
+    <link href='style.css'>
+    <script src='main.js'></script>
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css">
+    <!-- Bootstrap core CSS -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Material Design Bootstrap -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.8.0/css/mdb.min.css" rel="stylesheet">
+    <!-- Google Icons-->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons"rel="stylesheet">
+    <!-- JQuery -->
+    <script src="https://code.jquery.com/jquery-3.4.1.js" integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU=" crossorigin="anonymous">
+    </script>
+</head>
+<body style="background-color: indigo">
+<!--Navbar -->
+<nav class="mb-1 navbar navbar-expand-lg navbar-dark lighten-1" style="background-color: #f15b24fa">
+    <a class="navbar-brand" href="/">Trell-No</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent-555"
+      aria-controls="navbarSupportedContent-555" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent-555">
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item">
+          <a class="nav-link" href="/">Home
+            <span class="sr-only"></span>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#"></a>
+        </li>
+      </ul>
+      <ul class="navbar-nav ml-auto nav-flex-icons">
+        <li class="nav-item avatar">
+          <a class="nav-link p-0" href="#">
+            <img src="/static/utente1.png" class="rounded-circle z-depth-0"
+              alt="avatar image" height="35">
+          </a>
+        </li>
+      </ul>
+    </div>
+</nav>
+  <!--/.Navbar -->
+
+<style>
+    /* Button Style Material 2.0 */
+    .material2 {border-radius: 25px; background-color: #f15b24fa; color: #eee;}
+    /* On mouse-over */
+    .material2:hover {background: #eee;} 
+    /* Body */
+    .material3 {border-radius: 25px; background-color: blueviolet; color: #eee;}
+    /* On mouse-over */
+    .material3:hover {background: #eee;} 
+    /* Body */
+    .bodysign {background-color: #f15b24fa;}
+ </style>
+
+<br>
+<div class="row">
+<div class="col-md-4"></div>
+
+<!-- Contenuto Centrale-->
+<div class="col-md-4 card text-white white mb-3" style="max-width: 100%; border-radius: 25px;">
+  <div class="card-header font-weight-bold" style="color: #f15b24fa;">{{username}}</div>
+  <div class="card-body">
+    <h5 class="card-title font-weight-bold" style="color: #f15b24fa;">{{nome_card}}</h5>
+    {% if rows %}
+        {% for row in rows %}
+        <div class="card blue-text" style="margin: 4%;">
+            <div class="card-body">
+                <h5 class="card-title">{{row['nomeoggetto']}}</h5>
+                <p class="card-text">{{row['descrizione']}}</p>
+                <a href="/done/{{row['nomeoggetto']}}" class="card-link">Fatto</a>
+            </div>
+        </div>
+        {% endfor %}
+    {% else %}
+
+    {% endif %}
+</div>
+</div>
+</div>
+
+
+
+
+</body>
+
+  <!-- Bootstrap tooltips -->
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.4/umd/popper.min.js"></script>
+<!-- Bootstrap core JavaScript -->
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/js/bootstrap.min.js"></script>
+<!-- MDB core JavaScript -->
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.8.0/js/mdb.min.js"></script>
+</body>
+</html>

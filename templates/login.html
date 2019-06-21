@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title>Join The Offer</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <link rel='stylesheet' type='text/css' media='screen' href='main.css'>
+    <link href='style.css'>
+    <script src='main.js'></script>
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css">
+    <!-- Bootstrap core CSS -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Material Design Bootstrap -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.8.0/css/mdb.min.css" rel="stylesheet">
+    <!-- Google Icons-->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons"rel="stylesheet">
+    <!-- JQuery -->
+    <script src="https://code.jquery.com/jquery-3.4.1.js" integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU=" crossorigin="anonymous"></script>
+
+</head>
+<body class="bodysign">
+  <style>
+    /* Button Style Material 2.0 */
+    .material2 {border-radius: 25px; background-color: #f15b24fa; color: #eee;}
+    /* On mouse-over */
+    .material2:hover {background: #eee;} 
+    /* Body */
+    .material3 {border-radius: 25px; background-color: blueviolet; color: #eee;}
+    /* On mouse-over */
+    .material3:hover {background: #eee;} 
+    /* Body */
+    .bodysign {background-color: #f15b24fa;}
+  </style>
+
+<!--Navbar -->
+<nav class="mb-1 navbar navbar-expand-lg navbar-dark lighten-1" style="background-color: #ff5722">
+    <a class="navbar-brand" href="/">Trell-No</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent-555"
+      aria-controls="navbarSupportedContent-555" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent-555">
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item">
+          <a class="nav-link" href="#">Home
+            <span class="sr-only"></span>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#"></a>
+        </li>
+      </ul>
+      <ul class="navbar-nav ml-auto nav-flex-icons">
+        <li class="nav-item avatar">
+          <a class="nav-link p-0" href="#">
+            <img src="/static/utente1.png" class="rounded-circle z-depth-0"
+              alt="avatar image" height="35">
+          </a>
+        </li>
+      </ul>
+    </div>
+</nav>
+<!--/.Navbar -->
+
+
+
+<div class="row">
+<div class="col-sm-4">
+<!-- Rotating card -->
+<div class="card-wrapper">
+  <div id="card-1" class="card card-rotating text-center border border-light p-5" style=" border-radius: 25px; margin-right: 10%; margin-left: 10%; margin-top: 30px; background-color:rgb(255, 255, 255);">
+    <!-- Front Side -->
+    <div class="face front">
+      <!-- Avatar -->
+      <div class="avatar mx-auto white"><img src="https://mdbootstrap.com/img/Photos/Avatars/img%20(20).jpg" class="rounded-circle"
+          alt="Sample avatar image.">
+      </div>
+      <!-- Content -->
+      <div class="card-body">
+        <h4 class="font-weight-bold mb-3">Marie Johnson</h4>
+        <p class="font-weight-bold blue-text">Web developer</p>
+        <!-- Triggering button -->
+        <p data-card="card-1">Crea il tuo profilo e condividi liste di impegni</p>
+      </div>
+    </div>
+    <!-- Front Side -->
+  </div>
+</div>
+<!-- Rotating card -->
+</div>
+
+
+
+
+
+<!-- Form login -->
+<div class="col-sm-4">
+<form action = "/loginexec" method="POST" class="text-center border border-light p-5" style=" border-radius: 25px; margin-right: 10%; margin-left: 10%; margin-top: 30px; background-color:rgb(255, 255, 255);">
+    <p class="h3 mb-4">Accedi</p>
+    <!-- Username -->
+     <div class="md-form form-lg" style="background-color: white;">
+       <input type="text" id="username" name="username" class="form-control form-control-lg validate">
+       <label for="username" data-error="wrong" data-success="right">Username</label>
+     </div>
+    <!-- Password -->
+     <div class="md-form form-lg" style="background-color: white;">
+       <input type="password" id="password" name="password" class="form-control form-control-lg validate">
+       <label for="password" data-error="wrong" data-success="right">Password</label>
+     </div>
+    <!-- Login button -->
+     <button class="material2 btn btn-block my-4" type="submit" value="submit" style="margin: 0%;">Login</button>
+    <!-- Register -->
+    <a href="/signup"><button class="material3 btn btn-block my-4" type="submit" value="submit" style="margin: 0%;">Register</button></a>
+     </p>
+  </form>
+</div>
+ <!-- Default form login -->
+
+
+
+<!-- Card -->
+<div class="col-sm-4">
+<div class="card text-center border border-light p-5" style=" border-radius: 25px; margin-right: 10%; margin-left: 10%; margin-top: 30px; background-color:rgb(255, 255, 255);">
+
+<!-- Card image -->
+  <div class="view overlay">
+    <img class="card-img-top" src="https://mdbootstrap.com/img/Mockups/Lightbox/Thumbnail/img%20(67).jpg" alt="Card image cap">
+      <div class="mask rgba-white-slight"></div>
+    </a>
+  </div>
+  <!-- Card content -->
+  <div class="card-body">
+    <!-- Title -->
+    <h4 class="card-title">Organizza Le bacheche in schede</h4>
+    <!-- Text -->
+    <p class="card-text">Condividi le bacheche con altri utenti</p>
+  </div>
+</div>
+</div>
+<!-- Card -->
+</div>
+
+
+<!-- Form Signup -->
+<form action = "{{ url_for('signupexec') }}" method = "POST" id="formlogin" class="text-center border border-light p-5" style=" border-radius: 25px; margin-right: 5%; margin-left: 5%; margin-top: 100px; background-color:rgb(255, 255, 255);">
+        <p class="h3 mb-4">Registrati</p>
+        <p class="h6 mb-4">Abbiamo bisogno di poche informazioni</p>
+        <!-- Name--> 
+          <div class="md-form md-outline form-lg" style="background-color: white;">
+            <input type="text" id="username" name="username" class="form-control form-control-lg validate">
+            <label for="username" data-error="wrong" data-success="right">Name</label>
+          </div>
+        <!-- Email -->
+         <div class="md-form md-outline form-lg" style="background-color: white;">
+           <input type="email" id="email" name="email" class="form-control form-control-lg validate">
+           <label for="email" data-error="wrong" data-success="right">E-mail</label>
+         </div>
+        <!-- Password -->
+         <div class="md-form md-outline form-lg" style="background-color: white;">
+           <input type="password" id="password" name="password" class="form-control form-control-lg validate">
+           <label for="password" data-error="wrong" data-success="right">Password</label>
+         </div>
+        <!-- Login button -->
+         <button class="material2 btn btn-block my-4" type="submit" style="margin: 0%;">Signup</button>
+        <!-- Register -->
+        <a href="/login"><button class="material2 btn btn-block my-4" type="submit" style="margin: 0%;">Signup</button></a>
+      </form>
+      <!-- Default form login -->
+
+
+<!-- Bootstrap tooltips -->
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.4/umd/popper.min.js"></script>
+<!-- Bootstrap core JavaScript -->
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/js/bootstrap.min.js"></script>
+<!-- MDB core JavaScript -->
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.8.0/js/mdb.min.js"></script>
+</body>
+</html>
