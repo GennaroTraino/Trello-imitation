@@ -3,7 +3,7 @@
 <head>
     <meta charset='utf-8'>
     <meta http-equiv='X-UA-Compatible' content='IE=edge'>
-    <title>Join The Offer</title>
+    <title>Trello Imitation</title>
     <meta name='viewport' content='width=device-width, initial-scale=1'>
     <link rel='stylesheet' type='text/css' media='screen' href='main.css'>
     <link href='style.css'>
@@ -40,9 +40,12 @@
         </li>
       </ul>
       <ul class="navbar-nav ml-auto nav-flex-icons">
+        <li class="nav-item">
+          <a href="/logout" class="nav-link">Esci Dal Tuo Account</a>
+        </li>
         <li class="nav-item avatar">
           <a class="nav-link p-0" href="#">
-            <img src="/static/utente1.png" class="rounded-circle z-depth-0"
+            <img src="/static/{{username}}.png" class="rounded-circle z-depth-0"
               alt="avatar image" height="35">
           </a>
         </li>
@@ -79,13 +82,75 @@
             <div class="card-body">
                 <h5 class="card-title">{{row['nomeoggetto']}}</h5>
                 <p class="card-text">{{row['descrizione']}}</p>
-                <a href="/done/{{row['nomeoggetto']}}" class="card-link">Fatto</a>
+                {% if not row['svolto'] %}  
+                  <a href="/done/{{row['nomeoggetto']}}" class="card-link">Fatto</a>
+                  <a href="/delete/{{row['nomeoggetto']}}" class="card-link"><i class="fas fa-trash"></i></a>
+                {% else %}
+                  <a href="/delete/{{row['nomeoggetto']}}" class="card-link"><i class="fas fa-trash"></i></a>
+                  <p class="card-text btn-outline-orange orange-text font-weight-bold">Completato</p>
+                {% endif %}
             </div>
         </div>
         {% endfor %}
     {% else %}
-
+    <div class="card blue-text" style="margin: 4%;">
+        <div class="card-body"> 
+          <h5 class="card-title">Nessuna Attività</h5>
+          <p class="card-text">Creane subito una.. è semplice</p>
+        </div>
+    </div>
     {% endif %}
+
+
+<!-- Button trigger modal -->
+<div class="row">
+  <div class="col-md-2"></div>
+  <div class="col-sm-8 card text-white white mb-3" style="max-width: 100%; border-radius: 25px;">
+      <div class="card-body text-center">
+      <button id="modalActivate" type="button" class="font-weight-bold btn indigo" data-toggle="modal" data-target="#nuovascheda" style="border-radius: 20px;"">
+          Crea una nuova Attività
+      </button>
+      </div>
+  </div>
+</div>
+
+<!-- MODAL-->
+<div class="modal fade" id="nuovascheda" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+  aria-hidden="true">
+  <div class="modal-dialog modal-notify modal-warning" role="document">
+    <!--Content-->
+    <div class="modal-content">
+      <!--Header-->
+      <div class="modal-header text-center indigo">
+        <h4 class="modal-title white-text w-100 font-weight-bold py-2 indigo">Crea Nuova Attività</h4>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true" class="white-text">&times;</span>
+        </button>
+      </div>
+
+      <!--Body-->
+      <form action="/add/{{nome_card}}" method="POST">
+      <div class="modal-body">
+        <div class="md-form mb-5">
+          <input type="text" id="nome" name="nome" class="form-control validate">
+          <label data-error="wrong" data-success="right" for="form3">Nome Attività</label>
+        </div>
+        <div class="md-form mb-5">
+            <input type="text" id="descrizione" name="descrizione" class="form-control validate">
+            <label data-error="wrong" data-success="right" for="form3">Descrizione</label>
+        </div>
+      <!--Footer-->
+      <div class="modal-footer justify-content-center">
+        <button style="border-radius: 15px;" type="submit" value="submit" value class="btn btn-outline-blue-grey waves-effect was-validated">Insert <i class="fas fa-paper-plane-o ml-1"></i></button>
+      </div>
+    </div>
+    </form>
+    <!--/.Content-->
+  </div>
+</div>
+
+
+
 </div>
 </div>
 </div>

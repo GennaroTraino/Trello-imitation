@@ -24,7 +24,7 @@ conn.execute("INSERT INTO cards VALUES  ('Lista Spesa','pippo42');")
 conn.execute("INSERT INTO cards VALUES  ('Vacanza','belgatto');")
 conn.execute("INSERT INTO cards VALUES  ('Studiare','pippo42');")
 
-conn.execute("INSERT INTO cards_items VALUES ('Flask','Progetto TecWeb6','Implementare Flask in Python',0);")
+conn.execute("INSERT INTO cards_items VALUES ('Flask','Progetto TecWeb6','Implementare Flask in Python',1);")
 conn.execute("INSERT INTO cards_items VALUES ('MongoDB','Progetto TecWeb6','Implementare MongoDB in Flask',0);")
 conn.execute("INSERT INTO cards_items VALUES ('Controllare CSS','Progetto TecWeb6','controllare codice css',0);")
 conn.execute("INSERT INTO cards_items VALUES ('Virtual Device','Progetto Terminali','configurare emulatore android studio',0);")
@@ -67,11 +67,12 @@ def card(nome):
     cur = con.cursor()
     cur.execute("select * from cards join cards_items on nome = nome_card where nome = ?",(nome_card,))
     rows = cur.fetchall()
+
     return render_template("card.html",rows = rows,nome_card = nome_card,username = session.get('username'))
 
 ########### Elimina Card Items ############
-@app.route('/done/<item>')
-def done(item):
+@app.route('/delete/<item>')
+def delete(item):
     item = item
     con = sql.connect("database.db")
     con.row_factory = sql.Row
@@ -79,6 +80,31 @@ def done(item):
     con.commit()
 
     return redirect('/')
+########## ADD ITEMS #########
+@app.route('/add/<card>',methods = ['POST'])
+def add(card):
+    card = card
+    if request.method == 'POST':
+        con = sql.connect("database.db")
+        con.row_factory = sql.Row
+        nomeoggetto = request.form['nome']
+        descrizione = request.form['descrizione']
+        con.execute("INSERT INTO cards_items VALUES (?,?,?,?)",(nomeoggetto,card,descrizione,0,))
+        con.commit()
+    return redirect(url_for('/'))
+
+############# ITEM CARD SVOLTO #########
+@app.route('/done/<item>')
+def done(item):
+    item = item
+    con = sql.connect("database.db")
+    con.row_factory = sql.Row
+    con.execute("UPDATE cards_items SET svolto = 1 where nomeoggetto = ?",(item,))
+    con.commit()
+
+    return redirect('/')
+
+
 
 ######### LIST TEMP ################
 @app.route('/list')
@@ -146,6 +172,33 @@ def signupexec():
         finally:
             return redirect(url_for('init'))
             con.close()
+    return redirect('/')
+
+######## INSERT CARD ######## 
+@app.route('/insertcard',methods = ['POST','GET'])
+def insertcard():
+    if request.method == 'POST':
+        card = request.form['nome']
+        username = session.get('username')
+        con = sql.connect("database.db")
+        con.row_factory = sql.Row
+        con.execute("INSERT INTO cards VALUES (?,?)",(card,username,))
+        con.commit()
+
+        return redirect('/')
+    return redirect('/')
+
+########## DELETE CARD ######
+@app.route('/deletecard/<card>')
+def deletecard(card):
+    card = card
+    con = sql.connect("database.db")
+    con.row_factory = sql.Row
+    con.execute("DELETE FROM cards where nome = ?",(card,))
+    con.commit()
+
+    return redirect('/')
+
 
 if __name__ == "__main__":
     app.run(debug = True)

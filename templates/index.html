@@ -3,7 +3,7 @@
 <head>
     <meta charset='utf-8'>
     <meta http-equiv='X-UA-Compatible' content='IE=edge'>
-    <title>Join The Offer</title>
+    <title>Trello Imitation</title>
     <meta name='viewport' content='width=device-width, initial-scale=1'>
     <link rel='stylesheet' type='text/css' media='screen' href='main.css'>
     <link href='style.css'>
@@ -37,7 +37,7 @@
     <div class="collapse navbar-collapse" id="navbarSupportedContent-555">
       <ul class="navbar-nav mr-auto">
         <li class="nav-item">
-          <a class="nav-link" href="#">Home
+          <a class="nav-link" href="/">Home
             <span class="sr-only"></span>
           </a>
         </li>
@@ -46,17 +46,21 @@
         </li>
       </ul>
       <ul class="navbar-nav ml-auto nav-flex-icons">
+        <li class="nav-item">
+          <a href="/logout" class="nav-link">Esci Dal Tuo Account</a>
+        </li>
         <li class="nav-item avatar">
           <a class="nav-link p-0" href="#">
-            <img src="/static/utente1.png" class="rounded-circle z-depth-0"
-              alt="avatar image" height="35">
+            <img src="/static/{{username}}.png" class="rounded-circle z-depth-0" alt="avatar image" height="35">
           </a>
         </li>
       </ul>
     </div>
 </nav>
-  <!--/.Navbar -->
+<!--/.Navbar -->
 
+
+<!-- Cards -->
 <div class="row" style="margin: 4%;">
 {% if row %}
 {% for row in row %}
@@ -65,12 +69,21 @@
   <a href="/users/{{row['username']}}" class="card-header" style="color: indigo;">{{row["username"]}}</a>
   <div class="card-body">
     <a href="/card/{{row['nome']}}" class="card-title" style="color: blu; border-radius: 25px;"><h4>{{row["nome"]}}</h4></a>
+    <hr>
+    <span style="font-size: 30px;">
+      <a href="/deletecard/{{row['nome']}}"><i class="fas fa-trash"></i></a>
+    </span>
+    <span style="font-size: 30px; margin-left: 38%;">
+      <a href="/card/{{row['nome']}}"><i class="fas fa-arrow-alt-circle-right"></i></a>
+    </span>
   </div>
 </div>
 </div>
 {% endfor %}
 {% else %}
-<h1>Non Hai ancora nessuna card</h1>
+<div class="card text-white white mb-3">
+<h1 class="font-weight-bold card-title" style="width: 100%; color: #ff5722">Non Hai ancora nessuna card, Creane una</h1>
+</div>
 {% endif %}
 </div>
 
@@ -80,34 +93,46 @@
 <div class="col-md-3"></div>
 <div class="col-sm-6 card text-white white mb-3" style="max-width: 75%; border-radius: 25px;">
     <div class="card-body text-center">
-    <button id="modalActivate" type="button" class="btn indigo" data-toggle="modal" data-target="#nuovascheda" style="border-radius: 20px;"">
-        Inserisci una nuova scheda
+    <button id="modalActivate" type="button" class="font-weight-bold btn indigo" data-toggle="modal" data-target="#nuovascheda" style="border-radius: 20px;"">
+        Crea una nuova scheda
     </button>
     </div>
 </div>
 </div>
 
 <!-- MODAL-->
-<div class="modal fade" id="nuovascheda" tabindex="-1" role="dialog" aria-labelledby="nuovascheda"
+<div class="modal fade" id="nuovascheda" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
   aria-hidden="true">
-  <div class="modal-dialog" role="document">
+  <div class="modal-dialog modal-notify modal-warning" role="document">
+    <!--Content-->
     <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="nuovascheda">Modal title</h5>
+      <!--Header-->
+      <div class="modal-header text-center indigo">
+        <h4 class="modal-title white-text w-100 font-weight-bold py-2 indigo">Crea Nuova Scheda</h4>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
+          <span aria-hidden="true" class="white-text">&times;</span>
         </button>
       </div>
+
+      <!--Body-->
+      <form action="/insertcard" method="POST">
       <div class="modal-body">
-        ...
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary">Save changes</button>
+        <div class="md-form mb-5">
+          <i class="fas fa-user prefix grey-text"></i>
+          <input type="text" id="nome" name="nome" class="form-control validate">
+          <label data-error="wrong" data-success="right" for="form3">Nome Card</label>
+        </div>
+
+      <!--Footer-->
+      <div class="modal-footer justify-content-center">
+        <button style="border-radius: 15px;" type="submit" value="submit" value class="btn btn-outline-blue-grey waves-effect was-validated">Insert <i class="fas fa-paper-plane-o ml-1"></i></button>
       </div>
     </div>
+    </form>
+    <!--/.Content-->
   </div>
 </div>
+
 
 
 <!-- Bootstrap tooltips -->
