@@ -91,7 +91,7 @@ def add(card):
         descrizione = request.form['descrizione']
         con.execute("INSERT INTO cards_items VALUES (?,?,?,?)",(nomeoggetto,card,descrizione,0,))
         con.commit()
-    return redirect(url_for('/'))
+    return redirect('/')
 
 ############# ITEM CARD SVOLTO #########
 @app.route('/done/<item>')
